@@ -259,6 +259,48 @@
             bottom: 0;
             left: 0;
         }
+        body {
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+
+        .fixed.bottom-4.right-4 {
+            transition: none;
+        }
+
+        .fixed.bottom-4.right-4:hover {
+            transform: none;
+        }
     </style>
 </head>
 <body class="bg-dark text-white">
@@ -388,6 +430,7 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Proyectos Destacados</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Proyecto 1 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                         <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial" class="w-full h-48 object-cover">
                         <div class="p-4">
@@ -396,6 +439,7 @@
                             <button onclick="openProjectModal('proyecto1')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                         </div>
                     </div>
+                    <!-- Proyecto 2 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                         <img src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano" class="w-full h-48 object-cover">
                         <div class="p-4">
@@ -404,6 +448,7 @@
                             <button onclick="openProjectModal('proyecto2')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                         </div>
                     </div>
+                    <!-- Proyecto 3 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                         <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial" class="w-full h-48 object-cover">
                         <div class="p-4">
@@ -657,7 +702,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5493546450025" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 z-50 bg-green-500 text-white rounded-full p-3 hover:bg-green-600 transition-all duration-300 hover:scale-110">
+    <a href="https://wa.me/5493546450025" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 z-50 bg-green-500 text-white rounded-full p-3">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
@@ -859,7 +904,7 @@
         }
 
         function openProjectModal(modalId) {
-            const modal = document.getElementById(modalId);
+                        const modal = document.getElementById(modalId);
             modal.style.display = 'block';
 
             // Initialize Swiper for this modal
