@@ -197,19 +197,8 @@
         .swiper-button-prev {
             color: #FFC107;
         }
-
         .swiper-pagination-bullet-active  {
             background: #FFC107;
-        }
-
-        @media (max-width: 640px) {
-            .swiper-container {
-                height: 200px;
-            }
-            .modal-content {
-                width: 95%;
-                margin: 2% auto;
-            }
         }
         .video-container {
             position: relative;
@@ -259,47 +248,46 @@
             bottom: 0;
             left: 0;
         }
-        body {
-            overflow-x: hidden;
+        .reels-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
         }
-
-        .container {
-            width: 100%;
-            max-width: 100%;
-            padding-left: 15px;
-            padding-right: 15px;
+        .reel {
+            flex: 0 0 auto;
+            width: 315px;
+            height: 560px;
+            margin-right: 1rem;
+            scroll-snap-align: start;
         }
-
-        @media (min-width: 640px) {
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
             .container {
-                max-width: 640px;
+                padding-left: 1rem;
+                padding-right: 1rem;
             }
-        }
-
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
+            .hero-slider {
+                height: 60vh;
             }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
+            .text-4xl {
+                font-size: 2rem;
             }
-        }
-
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1280px;
+            .text-xl {
+                font-size: 1rem;
             }
-        }
-
-        .fixed.bottom-4.right-4 {
-            transition: none;
-        }
-
-        .fixed.bottom-4.right-4:hover {
-            transform: none;
+            .swiper-container {
+                height: 200px;
+            }
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+            }
+            .reel {
+                width: 100%;
+                height: calc(100vh - 100px);
+            }
         }
     </style>
 </head>
@@ -311,11 +299,11 @@
         </div>
     </div>
 
-    <div class="top-banner gradient-bg text-dark py-2">
-        <div class="top-banner-content">
-            <span class="mx-4">Personal capacitado a nivel nacional</span>
-            <span class="mx-4">Maquinaria certificada para transformar sus proyectos en realidad</span>
-            <span class="mx-4">Excelencia en construcción vial y desarrollos urbanos</span>
+    <div class="top-banner gradient-bg text-dark py-2 overflow-hidden">
+        <div class="top-banner-content whitespace-nowrap">
+            <span class="inline-block mx-4">Personal capacitado a nivel nacional</span>
+            <span class="inline-block mx-4">Maquinaria certificada para transformar sus proyectos en realidad</span>
+            <span class="inline-block mx-4">Excelencia en construcción vial y desarrollos urbanos</span>
         </div>
     </div>
 
@@ -350,7 +338,7 @@
 
     <main>
         <section id="inicio" class="hero-slider">
-            <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+            <div class="hero-slide active" style="background-image:  url('https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
                 <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                     <div class="text-center px-4">
                         <h1 class="text-4xl md:text-6xl font-bold mb-4">CONSER Constructora</h1>
@@ -367,7 +355,7 @@
                     <div class="text-center px-4">
                         <h1 class="text-4xl md:text-6xl font-bold mb-4">Excelencia en Construcción</h1>
                         <p class="text-xl md:text-2xl mb-8">Transformamos terrenos con precisión y calidad</p>
-                        <div class="flex  flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                             <a href="#contacto" class="gradient-bg text-dark py-2 px-6 rounded-full font-semibold hover:opacity-90 transition-opacity">Solicitar Presupuesto</a>
                             <a href="#proyectos" class="bg-white text-dark py-2 px-6 rounded-full font-semibold hover:bg-gray-200 transition-colors">Ver Proyectos</a>
                         </div>
@@ -391,7 +379,7 @@
         <section id="servicios" class="py-16 bg-dark">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Nuestros Servicios</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
                         <i class="fas fa-tractor text-primary text-5xl mb-4"></i>
                         <h3 class="text-xl font-semibold mb-2">Excavaciones</h3>
@@ -429,7 +417,7 @@
         <section id="proyectos" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Proyectos Destacados</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Proyecto 1 -->
                     <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                         <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial" class="w-full h-48 object-cover">
@@ -471,31 +459,43 @@
                     <button class="filter-btn mx-2 my-2 px-4 py-2 bg-gray-700 text-white rounded-full" data-filter="excavacion">Excavación</button>
                     <button class="filter-btn mx-2 my-2 px-4 py-2 bg-gray-700 text-white rounded-full" data-filter="movimiento">Movimiento de Suelos</button>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="gallery-grid">
                     <div class="gallery-item vial">
                         <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Vial 1" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer" onclick="openModal('galeria1')">
-                        <button onclick="openModal('galeria1')" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                     </div>
                     <div class="gallery-item urbano">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Urbano 1" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer" onclick="openModal('galeria2')">
-                        <button onclick="openModal('galeria2')" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                     </div>
                     <div class="gallery-item excavacion">
                         <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Proyecto Excavación 1" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer" onclick="openModal('galeria3')">
-                        <button onclick="openModal('galeria3')" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                     </div>
                     <div class="gallery-item movimiento">
                         <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Movimiento de Suelos 1" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer" onclick="openModal('galeria4')">
-                        <button onclick="openModal('galeria4')" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                     </div>
                     <div class="gallery-item vial">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Vial 2" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer" onclick="openModal('galeria5')">
-                        <button onclick="openModal('galeria5')" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                     </div>
                     <div class="gallery-item urbano">
                         <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Proyecto Urbano 2" class="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer" onclick="openModal('galeria6')">
-                        <button onclick="openModal('galeria6')" class="mt-4 bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="reels" class="py-16 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-12 text-center text-primary">Nuestros Reels</h2>
+                <div class="reels-container">
+                    <div class="reel">
+                        <iframe src="https://www.instagram.com/reel/CqrYkBcAhbt/embed" width="315" height="560" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                    <div class="reel">
+                        <iframe src="https://www.instagram.com/reel/CqrYkBcAhbt/embed" width="315" height="560" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                    <div class="reel">
+                        <iframe src="https://www.instagram.com/reel/CqrYkBcAhbt/embed" width="315" height="560" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                    </div>
+                    <!-- Add more reels as needed -->
                 </div>
             </div>
         </section>
@@ -503,157 +503,161 @@
         <section id="video" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Nuestro Trabajo en Acción</h2>
-                <div class="video-container">
-                    <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Video Thumbnail" class="w-full h-full object-cover">
-                    <div class="play-button" onclick="playVideo()"></div>
+                <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto">
+                    <div id="youtube-player"></div>
                 </div>
             </div>
         </section>
 
-                <section id="ubicacion" class="py-16 bg-gray-900">
+        <section id="ubicacion" class="py-16 bg-dark">
             <div class="container mx-auto px-4">
-              <h2 class="text-3xl font-bold mb-8 text-center text-primary">Nuestra Ubicación</h2>
-              <div class="aspect-w-16 aspect-h-9">
-                <iframe                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13641.282556475326!2d-64.57619221907955!3d-31.978217016192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d2b0f78b2f7e7f%3A0xd215a4518a0ebe74!2sVilla%20General%20Belgrano%2C%20C%C3%B3rdoba!5e0!3m2!1ses-419!2sar!4v1653443063967!5m2!1ses-419!2sar" 
-                  width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-              </div>
+                <h2 class="text-3xl font-bold mb-12 text-center text-primary">Nuestra Ubicación</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">CONSER Constructora</h3>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt text-primary mr-2"></i> Dirección: Calle Principal 123, Villa General Belgrano, Córdoba, Argentina</p>
+                        <p class="mb-2"><i class="fas fa-phone text-primary mr-2"></i> Teléfono: +54 9 11 1234-5678</p>
+                        <p class="mb-4"><i class="fas fa-envelope text-primary mr-2"></i> Email: info@conserconstrucciones.com</p>
+                        <p class="mb-4">Estamos ubicados en el corazón de Villa General Belgrano, listos para atender tus necesidades de construcción y desarrollo urbano en toda la región.</p>
+                    </div>
+                    <div class="w-full h-96 rounded-lg overflow-hidden shadow-lg">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3396.8273708911!2d-64.55663!3d-31.6524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDM5JzA4LjYiUyA2NMKwMzMnMjMuOSJX!5e0!3m2!1sen!2sar!4v1620000000000!5m2!1sen!2sar" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
             </div>
-          </section>
+        </section>
 
-        <section id="faqs" class="py-16 bg-dark">
+        <section id="faqs" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Preguntas Frecuentes</h2>
                 <div class="max-w-3xl mx-auto">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3 class="text-lg font-semibold">¿Qué tipos de proyectos realiza CONSER Constructora?</h3>
+                            <h3 class="text-xl font-semibold">¿Qué tipos de proyectos realizan?</h3>
                             <i class="fas fa-chevron-down text-primary"></i>
                         </div>
-                        <div class="faq-answer">
-                            <p class="p-4 text-gray-400">CONSER Constructora se especializa en proyectos de construcción vial, desarrollos urbanos, excavaciones, movimiento de suelos, apertura y reparación de caminos rurales, entre otros. Nuestro equipo está capacitado para manejar proyectos de diversa escala y complejidad.</p>
+                        <div class="faq-answer p-4 bg-gray-800">
+                            <p>Realizamos una amplia gama de proyectos, incluyendo construcción vial, desarrollos urbanos, excavaciones, movimiento de suelos, apertura de caminos rurales y más. Nuestro equipo está capacitado para manejar proyectos de diversa escala y complejidad.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3 class="text-lg font-semibold">¿Cuál es el área de cobertura de CONSER Constructora?</h3>
+                            <h3 class="text-xl font-semibold">¿Cuál es su área de cobertura?</h3>
                             <i class="fas fa-chevron-down text-primary"></i>
                         </div>
-                        <div class="faq-answer">
-                            <p class="p-4 text-gray-400">CONSER Constructora opera principalmente en Villa General Belgrano y sus alrededores. Sin embargo, también realizamos proyectos en otras áreas de la provincia y del país, dependiendo de la naturaleza y escala del proyecto.</p>
+                        <div class="faq-answer p-4 bg-gray-800">
+                            <p>Nuestra sede principal está en Villa General Belgrano, Córdoba, pero ofrecemos servicios en toda la provincia de Córdoba y alrededores. También podemos considerar proyectos en otras regiones del país, dependiendo de la escala y naturaleza del trabajo.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3 class="text-lg font-semibold">¿Qué medidas de seguridad implementa CONSER en sus proyectos?</h3>
+                            <h3 class="text-xl font-semibold">¿Cómo puedo solicitar un presupuesto?</h3>
                             <i class="fas fa-chevron-down text-primary"></i>
                         </div>
-                        <div class="faq-answer">
-                            <p class="p-4 text-gray-400">En CONSER Constructora, la seguridad es nuestra prioridad. Implementamos rigurosos protocolos de seguridad, utilizamos equipos de protección personal, realizamos capacitaciones regulares y cumplimos con todas las normativas de seguridad vigentes en la industria de la construcción.</p>
+                        <div class="faq-answer p-4 bg-gray-800">
+                            <p>Para solicitar un presupuesto, puede contactarnos a través del formulario en nuestra página web, llamarnos directamente o enviarnos un correo electrónico. Necesitaremos detalles sobre su proyecto para proporcionarle una estimación precisa. Nuestro equipo se pondrá en contacto con usted para discutir los detalles y programar una visita al sitio si es necesario.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3 class="text-lg font-semibold">¿Cómo puedo solicitar un presupuesto para mi proyecto?</h3>
+                            <h3 class="text-xl font-semibold">¿Qué medidas de seguridad implementan en sus proyectos?</h3>
                             <i class="fas fa-chevron-down text-primary"></i>
                         </div>
-                        <div class="faq-answer">
-                            <p class="p-4 text-gray-400">Para solicitar un presupuesto, puede contactarnos a través del formulario en nuestra página web, llamarnos directamente al +54 9 3546 45-0025, o enviarnos un correo electrónico con los detalles de su proyecto. Nuestro equipo se pondrá en contacto con usted para discutir los detalles y proporcionarle un presupuesto personalizado.</p>
+                        <div class="faq-answer p-4 bg-gray-800">
+                            <p>La seguridad es nuestra prioridad número uno. Implementamos rigurosos protocolos de seguridad en todos nuestros proyectos, incluyendo el uso de equipos de protección personal, capacitación regular en seguridad para nuestro personal, y cumplimiento estricto de todas las normativas de seguridad locales y nacionales. Además, realizamos evaluaciones de riesgos antes de cada proyecto y mantenemos un monitoreo constante durante la ejecución.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonios" class="py-16 bg-gray-900">
+        <section id="testimonios" class="py-16 bg-dark">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Lo que dicen nuestros clientes</h2>
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                                <p class="text-gray-400 mb-4">"CONSER Constructora superó todas nuestras expectativas. Su profesionalismo y atención al detalle fueron excepcionales."</p>
+                                <p class="mb-4">"CONSER Constructora superó todas nuestras expectativas. Su profesionalismo y atención al detalle fueron excepcionales."</p>
                                 <div class="flex items-center">
                                     <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Cliente 1" class="w-12 h-12 rounded-full mr-4">
                                     <div>
                                         <h4 class="font-semibold">Juan Pérez</h4>
-                                        <p class="text-sm text-gray-500">Desarrollador Inmobiliario</p>
+                                        <p class="text-sm text-gray-400">Desarrollador Inmobiliario</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                                <p class="text-gray-400 mb-4">"La eficiencia y calidad del trabajo de CONSER en nuestro proyecto vial fue impresionante. Altamente recomendados."</p>
+                                <p class="mb-4">"La eficiencia y calidad de su trabajo en nuestro proyecto vial fueron impresionantes. Definitivamente los recomendaremos."</p>
                                 <div class="flex items-center">
                                     <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Cliente 2" class="w-12 h-12 rounded-full mr-4">
                                     <div>
                                         <h4 class="font-semibold">María González</h4>
-                                        <p class="text-sm text-gray-500">Ingeniera Civil</p>
+                                        <p class="text-sm text-gray-400">Ingeniera Civil</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="swiper-slide">
                             <div class="bg-gray-800 p-6 rounded-lg shadow-md">
-                                <p class="text-gray-400 mb-4">"Gracias a CONSER, nuestro proyecto de desarrollo urbano se completó a tiempo y dentro del presupuesto. Un equipo excepcional."</p>
+                                <p class="mb-4">"Su equipo demostró gran experiencia en el manejo de nuestro complejo proyecto de movimiento de suelos. Excelente trabajo."</p>
                                 <div class="flex items-center">
                                     <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Cliente 3" class="w-12 h-12 rounded-full mr-4">
                                     <div>
                                         <h4 class="font-semibold">Carlos Rodríguez</h4>
-                                        <p class="text-sm text-gray-500">Arquitecto</p>
+                                        <p class="text-sm text-gray-400">Arquitecto</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
             </div>
         </section>
 
-        <section id="contacto" class="py-16 bg-dark">
+        <section id="contacto" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Contáctanos</h2>
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <form action="#" method="POST" class="space-y-4">
-                            <div>
-                                <label for="nombre" class="block text-sm font-medium text-gray-400">Nombre</label>
-                                <input type="text" id="nombre" name="nombre" class="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-sm font-medium text-gray-400">Email</label>
-                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required>
-                            </div>
-                            <div>
-                                <label for="mensaje" class="block text-sm font-medium text-gray-400">Mensaje</label>
-                                <textarea id="mensaje" name="mensaje" rows="4" class="mt-1 block w-full rounded-md bg-gray-800 border-gray-700 text-white shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50" required></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="w-full gradient-bg text-dark py-2 px-4 rounded-md font-semibold hover:opacity-90 transition-opacity">Enviar Mensaje</button>
-                            </div>
-                        </form>
+                        <h3 class="text-2xl font-semibold mb-4">Información de Contacto</h3>
+                        <p class="mb-2"><i class="fas fa-map-marker-alt text-primary mr-2"></i> Dirección: Calle Principal 123, Villa General Belgrano, Córdoba, Argentina</p>
+                        <p class="mb-2"><i class="fas fa-phone text-primary mr-2"></i> Teléfono: +54 9 11 1234-5678</p>
+                        <p class="mb-4"><i class="fas fa-envelope text-primary mr-2"></i> Email: info@conserconstrucciones.com</p>
+                        <div class="flex space-x-4 mb-8">
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors"><i class="fab fa-facebook-f fa-2x"></i></a>
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors"><i class="fab fa-instagram fa-2x"></i></a>
+                            <a href="#" class="text-primary hover:text-primary-dark transition-colors"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">Horario de Atención</h4>
+                        <p class="mb-1">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
+                        <p>Sábados: 9:00 AM - 1:00 PM</p>
                     </div>
-                    <div class="space-y-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Información de Contacto</h3>
-                            <p class="text-gray-400"><i class="fas fa-map-marker-alt text-primary mr-2"></i> Villa General Belgrano, 5194</p>
-                            <p class="text-gray-400"><i class="fas fa-phone text-primary mr-2"></i> +54 9 3546  45-0025</p>
-                            <p class="text-gray-400"><i class="fas fa-envelope text-primary mr-2"></i> info@conserconstrucciones.com</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Horario de Atención</h3>
-                            <p class="text-gray-400">Lunes a Viernes: 8:00 AM - 6:00 PM</p>
-                            <p class="text-gray-400">Sábados: 9:00 AM - 1:00 PM</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Síguenos en Redes Sociales</h3>
-                            <div class="flex space-x-4">
-                                <a href="#" class="text-primary hover:text-primary-dark transition-colors"><i class="fab fa-facebook-f fa-2x"></i></a>
-                                <a href="#" class="text-primary hover:text-primary-dark transition-colors"><i class="fab fa-instagram fa-2x"></i></a>
-                                <a href="#" class="text-primary hover:text-primary-dark transition-colors"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                    <div>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-1">Nombre</label>
+                                <input type="text" id="name" name="name" required class="w-full px-3 py-2 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
                             </div>
-                        </div>
+                            <div>
+                                <label for="email" class="block mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-3 py-2 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="phone" class="block mb-1">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-3 py-2 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-1">Mensaje</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 bg-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors">Enviar Mensaje</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -663,33 +667,40 @@
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap justify-between">
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <div class="w-full md:w-1/4 mb-8 md:mb-0">
                     <img src="logo.png" alt="CONSER Constructora Logo" class="w-24 h-24 mb-4">
-                    <p class="text-sm text-gray-400">CONSER Constructora: Calidad y excelencia en construcción vial y desarrollos urbanos.</p>
+                    <p class="text-sm">CONSER Constructora: Calidad y excelencia en construcción vial y desarrollos urbanos.</p>
                 </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-4">Enlaces Rápidos</h3>
+                <div class="w-full md:w-1/4 mb-8 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
                     <ul class="space-y-2">
-                        <li><a href="#inicio" class="text-gray-400 hover:text-primary transition-colors">Inicio</a></li>
-                        <li><a href="#servicios" class="text-gray-400 hover:text-primary transition-colors">Servicios</a></li>
-                        <li><a href="#proyectos" class="text-gray-400 hover:text-primary transition-colors">Proyectos</a></li>
-                        <li><a href="#contacto" class="text-gray-400 hover:text-primary transition-colors">Contacto</a></li>
+                        <li><a href="#inicio" class="hover:text-primary transition-colors">Inicio</a></li>
+                        <li><a href="#servicios" class="hover:text-primary transition-colors">Servicios</a></li>
+                        <li><a href="#proyectos" class="hover:text-primary transition-colors">Proyectos</a></li>
+                        <li><a href="#galeria" class="hover:text-primary transition-colors">Galería</a></li>
+                        <li><a href="#contacto" class="hover:text-primary transition-colors">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="w-full md:w-1/4 mb-6 md:mb-0">
-                    <h3 class="text-lg font-semibold mb-4">Servicios</h3>
+                <div class="w-full md:w-1/4 mb-8 md:mb-0">
+                    <h4 class="text-lg font-semibold mb-4">Servicios</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Construcción Vial</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Desarrollos Urbanos</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Excavaciones</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Movimiento de Suelos</a></li>
+                        <li>Construcción Vial</li>
+                        <li>Desarrollos Urbanos</li>
+                        <li>Excavaciones</li>
+                        <li>Movimiento de Suelos</li>
+                        <li>Apertura de Caminos</li>
                     </ul>
                 </div>
                 <div class="w-full md:w-1/4">
-                    <h3 class="text-lg font-semibold mb-4">Contáctanos</h3>
-                    <p class="text-gray-400 mb-2"><i class="fas fa-map-marker-alt text-primary mr-2"></i> Villa General Belgrano, 5194</p>
-                    <p class="text-gray-400 mb-2"><i class="fas fa-phone text-primary mr-2"></i> +54 9 3546  45-0025</p>
-                    <p class="text-gray-400 mb-2"><i class="fas fa-envelope text-primary mr-2"></i> info@conserconstrucciones.com</p>
+                    <h4 class="text-lg font-semibold mb-4">Contáctanos</h4>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt text-primary mr-2"></i> Calle Principal 123, Villa General Belgrano</p>
+                    <p class="mb-2"><i class="fas fa-phone text-primary mr-2"></i> +54 9 11 1234-5678</p>
+                    <p class="mb-4"><i class="fas fa-envelope text-primary mr-2"></i> info@conserconstrucciones.com</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-primary transition-colors"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
             <hr class="border-gray-800 my-8">
@@ -702,13 +713,13 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5493546450025" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 z-50 bg-green-500 text-white rounded-full p-3">
+    <a href="https://api.whatsapp.com/send?phone=5491112345678" target="_blank" rel="noopener noreferrer" class="fixed bottom-4 right-4 bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors z-50">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
-    <!-- Project Modals -->
-    <div id="proyecto1" class="modal">
-        <div class="modal-content max-w-4xl">
+    <!-- Modales para proyectos -->
+    <div id="proyecto1Modal" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class="text-2xl font-bold mb-4">Proyecto Vial</h2>
             <div class="swiper-container mb-4">
@@ -717,22 +728,22 @@
                         <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial 1" class="w-full h-64 object-cover rounded-lg">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1573075175660-08fd45ac27a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial 2" class="w-full h-64 object-cover rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Vial 2" class="w-full h-64 object-cover rounded-lg">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial 3" class="w-full h-64 object-cover rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Vial 3" class="w-full h-64 object-cover rounded-lg">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-            <p class="text-gray-300">Este proyecto vial implicó la construcción de una carretera de 50 km que conecta dos importantes ciudades. Se utilizaron técnicas de construcción avanzadas para garantizar la durabilidad y seguridad de la vía. El proyecto incluyó la construcción de puentes, túneles y sistemas de drenaje modernos. Se completó en un plazo de 18 meses, cumpliendo con todos los estándares de calidad y seguridad.</p>
+            <p>Descripción detallada del proyecto vial, incluyendo desafíos superados, tecnologías utilizadas y resultados obtenidos. Este proyecto implicó la construcción de una carretera de 50 km que conecta dos importantes ciudades, mejorando significativamente el transporte y el comercio en la región. Utilizamos técnicas avanzadas de pavimentación y sistemas de drenaje innovadores para garantizar la durabilidad y seguridad de la vía.</p>
         </div>
     </div>
 
-    <div id="proyecto2" class="modal">
-        <div class="modal-content max-w-4xl">
+    <div id="proyecto2Modal" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class="text-2xl font-bold mb-4">Desarrollo Urbano</h2>
             <div class="swiper-container mb-4">
@@ -741,22 +752,22 @@
                         <img src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 1" class="w-full h-64 object-cover rounded-lg">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 2" class="w-full h-64 object-cover rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Desarrollo Urbano 2" class="w-full h-64 object-cover rounded-lg">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 3" class="w-full h-64 object-cover rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 3" class="w-full h-64 object-cover rounded-lg">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-            <p class="text-gray-300">Este proyecto de desarrollo urbano abarcó la planificación y construcción de un nuevo complejo residencial de 500 unidades. El diseño incluyó áreas verdes, instalaciones recreativas y comerciales. Se implementaron soluciones sostenibles como sistemas de energía solar y gestión eficiente del agua. El proyecto transformó un área suburbana en una comunidad moderna y autosuficiente.</p>
+            <p>Detalles sobre el proyecto de desarrollo urbano, incluyendo planificación, ejecución y beneficios para la comunidad. Este proyecto abarcó la creación de un nuevo barrio residencial con 200 viviendas, áreas verdes, centros comerciales y servicios públicos. Implementamos soluciones sostenibles como sistemas de recolección de agua de lluvia y paneles solares en todas las viviendas.</p>
         </div>
     </div>
 
-    <div id="proyecto3" class="modal">
-        <div class="modal-content max-w-4xl">
+    <div id="proyecto3Modal" class="modal">
+        <div class="modal-content">
             <span class="close">&times;</span>
             <h2 class="text-2xl font-bold mb-4">Excavación Industrial</h2>
             <div class="swiper-container mb-4">
@@ -765,72 +776,72 @@
                         <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial 1" class="w-full h-64 object-cover rounded-lg">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial 2" class="w-full h-64 object-cover rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Excavación Industrial 2" class="w-full h-64 object-cover rounded-lg">
                     </div>
                     <div class="swiper-slide">
-                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial 3" class="w-full h-64 object-cover rounded-lg">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Excavación Industrial 3" class="w-full h-64 object-cover rounded-lg">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-            <p class="text-gray-300">Este proyecto de excavación industrial implicó la preparación de un sitio de 100,000 m² para la construcción de una planta de fabricación. Se utilizaron técnicas avanzadas de excavación y movimiento de tierras, incluyendo el uso de maquinaria pesada de última generación. El proyecto se completó en 6 meses, cumpliendo con todos los requisitos ambientales y de seguridad.</p>
+            <p>Información sobre el proyecto de excavación industrial, destacando la escala del trabajo, equipos utilizados y medidas de seguridad implementadas. Este proyecto involucró la excavación de más de 100,000 metros cúbicos de tierra para la construcción de una planta industrial. Utilizamos maquinaria pesada de última generación y implementamos un sistema de monitoreo en tiempo real para garantizar la seguridad y eficiencia del proceso.</p>
         </div>
     </div>
 
-    <!-- Gallery Modals -->
-    <div id="galeria1" class="modal">
+    <!-- Modales para galería -->
+    <div id="galeria1Modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Proyecto Vial 1</h2>
-            <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Vial 1" class="w-full h-auto object-cover rounded-lg mb-4">
-            <p>Descripción detallada del proyecto vial, incluyendo su ubicación, desafíos superados y resultados obtenidos.</p>
+            <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Vial 1" class="w-full h-auto rounded-lg">
+            <h3 class="text-xl font-bold mt-4 mb-2">Proyecto Vial 1</h3>
+            <p>Descripción detallada del proyecto vial, incluyendo ubicación, duración y características especiales.</p>
         </div>
     </div>
 
-    <div id="galeria2" class="modal">
+    <div id="galeria2Modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Proyecto Urbano 1</h2>
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Urbano 1" class="w-full h-auto object-cover rounded-lg mb-4">
-            <p>Detalles sobre el proyecto de desarrollo urbano, incluyendo su planificación, ejecución y beneficios para la comunidad.</p>
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Urbano 1" class="w-full h-auto rounded-lg">
+            <h3 class="text-xl font-bold mt-4 mb-2">Proyecto Urbano 1</h3>
+            <p>Detalles sobre el proyecto de desarrollo urbano, incluyendo tipo de construcciones, área total y beneficios para la comunidad.</p>
         </div>
     </div>
 
-    <div id="galeria3" class="modal">
+    <div id="galeria3Modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Proyecto Excavación 1</h2>
-            <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Proyecto Excavación 1" class="w-full h-auto object-cover rounded-lg mb-4">
-            <p>Información sobre el proyecto de excavación, destacando la tecnología utilizada y los logros alcanzados.</p>
+            <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Proyecto Excavación 1" class="w-full h-auto rounded-lg">
+            <h3 class="text-xl font-bold mt-4 mb-2">Proyecto Excavación 1</h3>
+            <p>Información sobre el proyecto de excavación, incluyendo volumen de tierra movido, equipos utilizados y desafíos superados.</p>
         </div>
     </div>
 
-    <div id="galeria4" class="modal">
+    <div id="galeria4Modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Proyecto Movimiento de Suelos 1</h2>
-            <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Movimiento de Suelos 1" class="w-full h-auto object-cover rounded-lg mb-4">
-            <p>Detalles sobre el proyecto de movimiento de suelos, incluyendo la maquinaria utilizada y los resultados obtenidos.</p>
+            <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Movimiento de Suelos 1" class="w-full h-auto rounded-lg">
+            <h3 class="text-xl font-bold mt-4 mb-2">Proyecto Movimiento de Suelos 1</h3>
+            <p>Detalles sobre el proyecto de movimiento de suelos, incluyendo área trabajada, tipo de terreno y técnicas aplicadas.</p>
         </div>
     </div>
 
-    <div id="galeria5" class="modal">
+    <div id="galeria5Modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Proyecto Vial 2</h2>
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Vial 2" class="w-full h-auto object-cover rounded-lg mb-4">
-            <p>Descripción detallada del segundo proyecto vial, destacando las innovaciones implementadas y los beneficios para la comunidad.</p>
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Proyecto Vial 2" class="w-full h-auto rounded-lg">
+            <h3 class="text-xl font-bold mt-4 mb-2">Proyecto Vial 2</h3>
+            <p>Descripción del segundo proyecto vial, destacando las diferencias y mejoras respecto al primero.</p>
         </div>
     </div>
 
-    <div id="galeria6" class="modal">
+    <div id="galeria6Modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 class="text-2xl font-bold mb-4">Proyecto Urbano 2</h2>
-            <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Proyecto Urbano 2" class="w-full h-auto object-cover rounded-lg mb-4">
-            <p>Información sobre el segundo proyecto de desarrollo urbano, incluyendo su impacto en la infraestructura local y la calidad de vida de los residentes.</p>
+            <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Proyecto Urbano 2" class="w-full h-auto rounded-lg">
+            <h3 class="text-xl font-bold mt-4 mb-2">Proyecto Urbano 2</h3>
+            <p>Información sobre el segundo proyecto de desarrollo urbano, incluyendo características únicas y su impacto en la zona.</p>
         </div>
     </div>
 
@@ -895,22 +906,54 @@
                 answer.classList.toggle('active');
                 icon.classList.toggle('fa-chevron-down');
                 icon.classList.toggle('fa-chevron-up');
+                
+                if (answer.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = 0;
+                }
             });
+        });
+
+        // Testimonials slider
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
         });
 
         // Modal functionality
         function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
+            document.getElementById(modalId + 'Modal').style.display = 'block';
         }
 
-        function openProjectModal(modalId) {
-                        const modal = document.getElementById(modalId);
+        function openProjectModal(projectId) {
+            const modal = document.getElementById(projectId + 'Modal');
             modal.style.display = 'block';
-
-            // Initialize Swiper for this modal
-            new Swiper(`#${modalId} .swiper-container`, {
+            
+            // Initialize Swiper for project modals
+            new Swiper(modal.querySelector('.swiper-container'), {
                 slidesPerView: 1,
-                spaceBetween: 30,
+                spaceBetween: 20,
                 loop: true,
                 pagination: {
                     el: '.swiper-pagination',
@@ -923,62 +966,67 @@
             });
         }
 
-
-        const closeButtons = document.getElementsByClassName('close');
-        for (let i = 0; i < closeButtons.length; i++) {
-            closeButtons[i].onclick = function() {
+        const closeButtons = document.querySelectorAll('.close');
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
                 this.closest('.modal').style.display = 'none';
-            }
-        }
+            });
+        });
 
-        window.onclick = function(event) {
+        window.addEventListener('click', function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
-        }
-
-        // Testimonials slider
-        const swiper = new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
         });
 
-        // Video player
-        function playVideo() {
-            const videoContainer = document.querySelector('.video-container');
-            const iframe = document.createElement('iframe');
-            iframe.src = 'https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1';
-            iframe.allow = 'autoplay; encrypted-media';
-            iframe.allowFullscreen = true;
-            videoContainer.innerHTML = '';
-            videoContainer.appendChild(iframe);
-        }
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+            this.reset();
+        });
 
-        // Ensure responsiveness for project modals
-        window.addEventListener('resize', function() {
-            const swipers = document.querySelectorAll('.swiper-container');
-            swipers.forEach(swiperContainer => {
-                const swiperInstance = swiperContainer.swiper;
-                if (swiperInstance) {
-                    swiperInstance.update();
+        // YouTube API
+        let player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '360',
+                width: '640',
+                videoId: 'YOUR_YOUTUBE_VIDEO_ID',
+                playerVars: {
+                    'playsinline': 1,
+                    'rel': 0,
+                    'showinfo': 0
+                },
+                events: {
+                    'onReady': onPlayerReady
                 }
             });
+        }
+
+        function onPlayerReady(event) {
+            const playButton = document.createElement('div');
+            playButton.classList.add('play-button');
+            event.target.getIframe().parentNode.appendChild(playButton);
+
+            playButton.addEventListener('click', function() {
+                player.playVideo();
+                this.style.display = 'none';
+            });
+        }
+
+        // Load YouTube API
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // Responsive adjustments
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
         });
     </script>
 </body>
