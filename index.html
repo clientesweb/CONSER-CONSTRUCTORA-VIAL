@@ -174,6 +174,8 @@
             border: 1px solid #888;
             width: 90%;
             max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
         }
         .close {
             color: #aaa;
@@ -190,6 +192,24 @@
         .swiper-container {
             width: 100%;
             height: 300px;
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #FFC107;
+        }
+
+        .swiper-pagination-bullet-active  {
+            background: #FFC107;
+        }
+
+        @media (max-width: 640px) {
+            .swiper-container {
+                height: 200px;
+            }
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+            }
         }
         .video-container {
             position: relative;
@@ -367,29 +387,29 @@
         <section id="proyectos" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-12 text-center text-primary">Proyectos Destacados</h2>
-                <div class="flex overflow-x-auto pb-4 space-x-6">
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex-shrink-0 w-80">
-                        <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Vial" class="w-full h-48 object-cover">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-xl font-semibold mb-2">Proyecto Vial</h3>
                             <p class="text-gray-400 mb-4">Construcción de carretera con los más altos estándares de calidad.</p>
-                            <button onclick="openModal('proyecto1')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
+                            <button onclick="openProjectModal('proyecto1')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                         </div>
                     </div>
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex-shrink-0 w-80">
-                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Desarrollo Urbano" class="w-full h-48 object-cover">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-xl font-semibold mb-2">Desarrollo Urbano</h3>
                             <p class="text-gray-400 mb-4">Planificación y ejecución de un nuevo complejo residencial.</p>
-                            <button onclick="openModal('proyecto2')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
+                            <button onclick="openProjectModal('proyecto2')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                         </div>
                     </div>
-                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow flex-shrink-0 w-80">
-                        <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Excavación Industrial" class="w-full h-48 object-cover">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial" class="w-full h-48 object-cover">
                         <div class="p-4">
                             <h3 class="text-xl font-semibold mb-2">Excavación Industrial</h3>
                             <p class="text-gray-400 mb-4">Excavación a gran escala para un proyecto industrial.</p>
-                            <button onclick="openModal('proyecto3')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
+                            <button onclick="openProjectModal('proyecto3')" class="bg-primary text-white px-4 py-2 rounded hover:bg-primary-dark transition-colors">Ver más</button>
                         </div>
                     </div>
                 </div>
@@ -445,7 +465,7 @@
             </div>
         </section>
 
-        <section id="ubicacion" class="py-16 bg-gray-900">
+                <section id="ubicacion" class="py-16 bg-gray-900">
             <div class="container mx-auto px-4">
               <h2 class="text-3xl font-bold mb-8 text-center text-primary">Nuestra Ubicación</h2>
               <div class="aspect-w-16 aspect-h-9">
@@ -641,31 +661,76 @@
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
-    <!-- Modals -->
+    <!-- Project Modals -->
     <div id="proyecto1" class="modal">
-        <div class="modal-content">
+        <div class="modal-content max-w-4xl">
             <span class="close">&times;</span>
             <h2 class="text-2xl font-bold mb-4">Proyecto Vial</h2>
-            <img src="https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Proyecto Vial" class="w-full h-64 object-cover rounded-lg mb-4">
-            <p>Descripción detallada del proyecto vial, incluyendo su ubicación, desafíos superados y resultados obtenidos.</p>
+            <div class="swiper-container mb-4">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial 1" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1573075175660-08fd45ac27a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial 2" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Proyecto Vial 3" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <p class="text-gray-300">Este proyecto vial implicó la construcción de una carretera de 50 km que conecta dos importantes ciudades. Se utilizaron técnicas de construcción avanzadas para garantizar la durabilidad y seguridad de la vía. El proyecto incluyó la construcción de puentes, túneles y sistemas de drenaje modernos. Se completó en un plazo de 18 meses, cumpliendo con todos los estándares de calidad y seguridad.</p>
         </div>
     </div>
 
     <div id="proyecto2" class="modal">
-        <div class="modal-content">
+        <div class="modal-content max-w-4xl">
             <span class="close">&times;</span>
             <h2 class="text-2xl font-bold mb-4">Desarrollo Urbano</h2>
-            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Desarrollo Urbano" class="w-full h-64 object-cover rounded-lg mb-4">
-            <p>Detalles sobre el proyecto de desarrollo urbano, incluyendo su planificación, ejecución y beneficios para la comunidad.</p>
+            <div class="swiper-container mb-4">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 1" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 2" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desarrollo Urbano 3" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <p class="text-gray-300">Este proyecto de desarrollo urbano abarcó la planificación y construcción de un nuevo complejo residencial de 500 unidades. El diseño incluyó áreas verdes, instalaciones recreativas y comerciales. Se implementaron soluciones sostenibles como sistemas de energía solar y gestión eficiente del agua. El proyecto transformó un área suburbana en una comunidad moderna y autosuficiente.</p>
         </div>
     </div>
 
     <div id="proyecto3" class="modal">
-        <div class="modal-content">
+        <div class="modal-content max-w-4xl">
             <span class="close">&times;</span>
             <h2 class="text-2xl font-bold mb-4">Excavación Industrial</h2>
-            <img src="https://images.unsplash.com/photo-1531834685032-c34bf0d84c77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Excavación Industrial" class="w-full h-64 object-cover rounded-lg mb-4">
-            <p>Información sobre el proyecto de excavación industrial, destacando la tecnología utilizada y los logros alcanzados.</p>
+            <div class="swiper-container mb-4">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial 1" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial 2" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Excavación Industrial 3" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <p class="text-gray-300">Este proyecto de excavación industrial implicó la preparación de un sitio de 100,000 m² para la construcción de una planta de fabricación. Se utilizaron técnicas avanzadas de excavación y movimiento de tierras, incluyendo el uso de maquinaria pesada de última generación. El proyecto se completó en 6 meses, cumpliendo con todos los requisitos ambientales y de seguridad.</p>
         </div>
     </div>
 
@@ -793,10 +858,31 @@
             document.getElementById(modalId).style.display = 'block';
         }
 
+        function openProjectModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'block';
+
+            // Initialize Swiper for this modal
+            new Swiper(`#${modalId} .swiper-container`, {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
+
+
         const closeButtons = document.getElementsByClassName('close');
         for (let i = 0; i < closeButtons.length; i++) {
             closeButtons[i].onclick = function() {
-                this.parentElement.parentElement.style.display = 'none';
+                this.closest('.modal').style.display = 'none';
             }
         }
 
@@ -838,6 +924,17 @@
             videoContainer.innerHTML = '';
             videoContainer.appendChild(iframe);
         }
+
+        // Ensure responsiveness for project modals
+        window.addEventListener('resize', function() {
+            const swipers = document.querySelectorAll('.swiper-container');
+            swipers.forEach(swiperContainer => {
+                const swiperInstance = swiperContainer.swiper;
+                if (swiperInstance) {
+                    swiperInstance.update();
+                }
+            });
+        });
     </script>
 </body>
 </html>
